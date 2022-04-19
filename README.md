@@ -1,4 +1,4 @@
-# Helper
+# aPaczka API Client
 
 API client for aPaczka service.
 
