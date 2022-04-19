@@ -1,0 +1,33 @@
+{
+  "name": "patryk-sawicki/apaczka",
+  "description": "API client for aPaczka service.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Patryk Sawicki",
+      "email": "patryk@patryksawicki.pl"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PatrykSawicki\\Apaczka\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "laravel/framework": "^8.00 || ^9.00"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "PatrykSawicki\\Apaczka\\app\\Providers\\ApaczkaServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
