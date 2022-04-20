@@ -44,7 +44,7 @@ Return an array with a list of options.
 $aPaczka->options();
 ```
 
-### pointsType
+### Points type
 
 Return an array with a list of points type.
 ```php
