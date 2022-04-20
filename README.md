@@ -30,11 +30,11 @@ Return an array with a list of services.
 $aPaczka->services();
 ```
 
-### Pickups
+### Pickup type
 
-Return an array with a list of pickups.
+Return an array with a list of pickup type.
 ```php
-$aPaczka->pickups();
+$aPaczka->pickupType();
 ```
 
 ### Options

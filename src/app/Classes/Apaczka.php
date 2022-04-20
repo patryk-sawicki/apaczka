@@ -79,13 +79,13 @@ class Apaczka
     }
 
     /**
-     * Get pickups list.
+     * Get pickup type list.
      *
      * @return array
      */
-    public function pickups(): array
+    public function pickupType(): array
     {
-        return Cache::remember('pickups', config('apaczka.cache_time'), function(){
+        return Cache::remember('pickup_type', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
 
             if($serviceStructure->status != 200)
