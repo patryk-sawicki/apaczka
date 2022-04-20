@@ -30,6 +30,13 @@ Return an array with a list of services.
 $aPaczka->orders(int $page = 0, int $limit = 10);
 ```
 
+### Pickups
+
+Return an array with a list of pickups.
+```php
+$aPaczka->pickups();
+```
+
 ### Orders
 
 Return json response with the latest orders.

@@ -79,6 +79,23 @@ class Apaczka
     }
 
     /**
+     * Get pickups list.
+     *
+     * @return array
+     */
+    public function pickups(): array
+    {
+        return Cache::remember('pickups', config('apaczka.cache_time'), function(){
+            $serviceStructure = json_decode($this->serviceStructure());
+
+            if($serviceStructure->status != 200)
+                return [];
+
+            return $serviceStructure->response->pickup_type ?? [];
+        });
+    }
+
+    /**
      * Download waybill.
      *
      * @param int $orderId
