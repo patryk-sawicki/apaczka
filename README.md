@@ -27,7 +27,7 @@ $aPaczka = new Apaczka();
 
 Return an array with a list of services.
 ```php
-$aPaczka->orders(int $page = 0, int $limit = 10);
+$aPaczka->services();
 ```
 
 ### Pickups
