@@ -1,3 +1,8 @@
+### 1.0.4
+* Changed pickup type return.
+* Changed options return.
+* Changed package type return.
+
 ### 1.0.3
 * Added pickup type function.
 * Added options function.
