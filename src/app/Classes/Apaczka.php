@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use JetBrains\PhpStorm\ArrayShape;
+use stdClass;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class Apaczka
@@ -81,9 +82,9 @@ class Apaczka
     /**
      * Get pickup type list.
      *
-     * @return array
+     * @return array|stdClass
      */
-    public function pickupType(): array
+    public function pickupType(): array|stdClass
     {
         return Cache::remember('pickup_type', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
