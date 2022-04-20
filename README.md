@@ -37,6 +37,13 @@ Return an array with a list of pickups.
 $aPaczka->pickups();
 ```
 
+### Options
+
+Return an array with a list of options.
+```php
+$aPaczka->options();
+```
+
 ### Orders
 
 Return json response with the latest orders.

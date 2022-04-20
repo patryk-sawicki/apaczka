@@ -96,6 +96,23 @@ class Apaczka
     }
 
     /**
+     * Get options list.
+     *
+     * @return array
+     */
+    public function options(): array
+    {
+        return Cache::remember('options', config('apaczka.cache_time'), function(){
+            $serviceStructure = json_decode($this->serviceStructure());
+
+            if($serviceStructure->status != 200)
+                return [];
+
+            return $serviceStructure->response->options ?? [];
+        });
+    }
+
+    /**
      * Download waybill.
      *
      * @param int $orderId
