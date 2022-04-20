@@ -6,4 +6,7 @@ return [
 
     /*In seconds, max 1800*/
     'expires_time' => env('APACZKA_EXPIRES_TIME'),
+
+    /*Cache time*/
+    'cache_time' => env('CACHE_DEFAULT_TTL', 86400),
 ];

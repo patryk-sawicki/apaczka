@@ -2,6 +2,7 @@
 
 namespace PatrykSawicki\Apaczka\app\Classes;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use JetBrains\PhpStorm\ArrayShape;
@@ -112,15 +113,17 @@ class Apaczka
      */
     public function serviceStructure(): string
     {
-        $route = "service_structure/";
-        $expires = $this->expires();
-        $data = json_encode([]);
+        return Cache::remember('apaczkaServiceStructure', config('apaczka.cache_time'), function(){
+            $route = "service_structure/";
+            $expires = $this->expires();
+            $data = json_encode([]);
 
-        $requestData = $this->requestData($data, $route, $expires);
+            $requestData = $this->requestData($data, $route, $expires);
 
-        $response = Http::asForm()->post(config('apaczka.app_url').$route, $requestData);
+            $response = Http::asForm()->post(config('apaczka.app_url').$route, $requestData);
 
-        return $response->body();
+            return $response->body();
+        });
     }
 
     /**
@@ -131,15 +134,17 @@ class Apaczka
      */
     public function points(string $type): string
     {
-        $route = "points/$type/";
-        $expires = $this->expires();
-        $data = json_encode([]);
+        return Cache::remember('apaczkaPoints_'.$type, config('apaczka.cache_time'), function() use ($type) {
+            $route = "points/$type/";
+            $expires = $this->expires();
+            $data = json_encode([]);
 
-        $requestData = $this->requestData($data, $route, $expires);
+            $requestData = $this->requestData($data, $route, $expires);
 
-        $response = Http::asForm()->post(config('apaczka.app_url').$route, $requestData);
+            $response = Http::asForm()->post(config('apaczka.app_url') . $route, $requestData);
 
-        return $response->body();
+            return $response->body();
+        });
     }
 
     /**
@@ -201,19 +206,21 @@ class Apaczka
      */
     public function pickupHours(string $postalCode, int $serviceId = null, bool $removeIndex = false): string
     {
-        $route = 'pickup_hours/';
-        $expires = $this->expires();
-        $data = json_encode([
-            'postal_code' => $postalCode,
-            'service_id' => $serviceId,
-            'remove_index' => $removeIndex
-        ]);
+        return Cache::remember('apaczkaPickupHours_'.$postalCode.'_'.$serviceId.'_'.($removeIndex ? 1 : 0), config('apaczka.cache_time'), function() use ($postalCode, $serviceId, $removeIndex) {
+            $route = 'pickup_hours/';
+            $expires = $this->expires();
+            $data = json_encode([
+                'postal_code' => $postalCode,
+                'service_id' => $serviceId,
+                'remove_index' => $removeIndex
+            ]);
 
-        $requestData = $this->requestData($data, $route, $expires);
+            $requestData = $this->requestData($data, $route, $expires);
 
-        $response = Http::asForm()->post(config('apaczka.app_url').$route, $requestData);
+            $response = Http::asForm()->post(config('apaczka.app_url') . $route, $requestData);
 
-        return $response->body();
+            return $response->body();
+        });
     }
 
     /**
