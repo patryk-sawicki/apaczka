@@ -44,6 +44,13 @@ Return an array with a list of options.
 $aPaczka->options();
 ```
 
+### pointsType
+
+Return an array with a list of points type.
+```php
+$aPaczka->pointsType();
+```
+
 ### Orders
 
 Return json response with the latest orders.
