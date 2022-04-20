@@ -62,6 +62,23 @@ class Apaczka
     }
 
     /**
+     * Get services list.
+     *
+     * @return array
+     */
+    public function services(): array
+    {
+        return Cache::remember('apaczkaServices', config('apaczka.cache_time'), function(){
+            $serviceStructure = json_decode($this->serviceStructure());
+
+            if($serviceStructure->status != 200)
+                return [];
+
+            return $serviceStructure->response->services ?? [];
+        });
+    }
+
+    /**
      * Download waybill.
      *
      * @param int $orderId

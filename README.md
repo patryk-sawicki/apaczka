@@ -23,6 +23,13 @@ Class declaration.
 $aPaczka = new Apaczka();
 ```
 
+### Services
+
+Return an array with a list of services.
+```php
+$aPaczka->orders(int $page = 0, int $limit = 10);
+```
+
 ### Orders
 
 Return json response with the latest orders.
