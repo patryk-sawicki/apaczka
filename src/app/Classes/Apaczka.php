@@ -99,9 +99,9 @@ class Apaczka
     /**
      * Get options list.
      *
-     * @return array
+     * @return array|stdClass
      */
-    public function options(): array
+    public function options(): array|stdClass
     {
         return Cache::remember('options', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
