@@ -133,9 +133,9 @@ class Apaczka
     /**
      * Get package type list.
      *
-     * @return array
+     * @return array|stdClass
      */
-    public function packageType(): array
+    public function packageType(): array|stdClass
     {
         return Cache::remember('package_type', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
