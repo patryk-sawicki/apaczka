@@ -51,6 +51,13 @@ Return an array with a list of points type.
 $aPaczka->pointsType();
 ```
 
+### Package type
+
+Return an array with a list of package type.
+```php
+$aPaczka->packageType();
+```
+
 ### Orders
 
 Return json response with the latest orders.

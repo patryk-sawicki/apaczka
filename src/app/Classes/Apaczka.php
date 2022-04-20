@@ -130,6 +130,23 @@ class Apaczka
     }
 
     /**
+     * Get package type list.
+     *
+     * @return array
+     */
+    public function packageType(): array
+    {
+        return Cache::remember('package_type', config('apaczka.cache_time'), function(){
+            $serviceStructure = json_decode($this->serviceStructure());
+
+            if($serviceStructure->status != 200)
+                return [];
+
+            return $serviceStructure->response->package_type ?? [];
+        });
+    }
+
+    /**
      * Download waybill.
      *
      * @param int $orderId
