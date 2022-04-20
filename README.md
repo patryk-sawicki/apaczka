@@ -19,7 +19,7 @@ $ composer require patryk-sawicki/apaczka
 ## Usage
 
 Class declaration.
-```bash
+```php
 $aPaczka = new Apaczka();
 ```
 
@@ -33,80 +33,80 @@ $aPaczka->orders(int $page = 0, int $limit = 10);
 ### Orders
 
 Return json response with the latest orders.
-```bash
+```php
 $aPaczka->orders(int $page = 0, int $limit = 10);
 ```
 
 ### Order
 
 Return json response with the order details.
-```bash
+```php
 $aPaczka->order(int $orderId);
 ```
 
 ### Waybill
 
 Download waybill.
-```bash
+```php
 $aPaczka->downloadWaybill(int $orderId);
 ```
 
 Store waybill.
-```bash
+```php
 $aPaczka->storeWaybill(int $orderId, $path);
 ```
 
 ### Service structure
 
 Return json response with the service structure.
-```bash
+```php
 $aPaczka->serviceStructure();
 ```
 
 ### Postage points
 
 Return json response with the list of postage points.
-```bash
+```php
 $aPaczka->spoints(string $type);
 ```
 
 ### Turn In
 
 Download turn in.
-```bash
+```php
 $aPaczka->downloadTurnIn(array $orderIds);
 ```
 
 Store turn in.
-```bash
+```php
 $aPaczka->storeTurnIn(array $orderIds, $path);
 ```
 
 ### Pickup hours
 
 Return json response with the pickup hours.
-```bash
+```php
 $aPaczka->pickupHours(string $postalCode, int $serviceId = null, bool $removeIndex = false);
 ```
 
 ### Order valuation
 
 Return json response of the order valuation.
-```bash
+```php
 $aPaczka->orderValuation(array $order);
 ```
 
 ### Send order
 
 Return json response of the order send.
-```bash
+```php
 $aPaczka->sendOrder(array $order);
 ```
 
 ### Cancel order
 
 Return json response of the order cancel.
-```bash
+```php
 $aPaczka->cancelOrder(int $orderId);
 ```
 
