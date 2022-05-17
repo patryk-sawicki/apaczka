@@ -224,7 +224,7 @@ class Apaczka
      */
     public function serviceStructure(): string
     {
-        return Cache::remember('apaczkaServiceStructure', config('apaczka.cache_time'), function(){
+        $result = Cache::remember('apaczkaServiceStructure', config('apaczka.cache_time'), function(){
             $route = "service_structure/";
             $expires = $this->expires();
             $data = json_encode([]);
@@ -233,8 +233,16 @@ class Apaczka
 
             $response = Http::asForm()->post(config('apaczka.app_url').$route, $requestData);
 
+            if($response->status() != 200)
+                return '';
+
             return $response->body();
         });
+
+        if(empty($result))
+            Cache::forget('apaczkaServiceStructure');
+
+        return $result;
     }
 
     /**
