@@ -1,3 +1,6 @@
+### 1.0.5
+* Support for non-response issues.
+
 ### 1.0.4
 * Changed pickup type return.
 * Changed options return.

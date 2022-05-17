@@ -69,14 +69,19 @@ class Apaczka
      */
     public function services(): array
     {
-        return Cache::remember('apaczkaServices', config('apaczka.cache_time'), function(){
+        $result = Cache::remember('apaczkaServices', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
-
-            if($serviceStructure->status != 200)
+            
+            if(is_null($serviceStructure) || $serviceStructure->status != 200)
                 return [];
 
             return $serviceStructure->response->services ?? [];
         });
+        
+        if(empty($result))
+            Cache::forget('apaczkaServices');
+        
+        return $result;
     }
 
     /**
@@ -86,14 +91,19 @@ class Apaczka
      */
     public function pickupType(): array|stdClass
     {
-        return Cache::remember('pickup_type', config('apaczka.cache_time'), function(){
+        $result = Cache::remember('pickup_type', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
 
-            if($serviceStructure->status != 200)
+            if(is_null($serviceStructure) || $serviceStructure->status != 200)
                 return [];
 
             return $serviceStructure->response->pickup_type ?? [];
         });
+
+        if(empty($result))
+            Cache::forget('pickup_type');
+
+        return $result;
     }
 
     /**
@@ -103,14 +113,19 @@ class Apaczka
      */
     public function options(): array|stdClass
     {
-        return Cache::remember('options', config('apaczka.cache_time'), function(){
+        $result = Cache::remember('options', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
 
-            if($serviceStructure->status != 200)
+            if(is_null($serviceStructure) || $serviceStructure->status != 200)
                 return [];
 
             return $serviceStructure->response->options ?? [];
         });
+
+        if(empty($result))
+            Cache::forget('options');
+
+        return $result;
     }
 
     /**
@@ -120,14 +135,19 @@ class Apaczka
      */
     public function pointsType(): array
     {
-        return Cache::remember('points_type', config('apaczka.cache_time'), function(){
+        $result = Cache::remember('points_type', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
 
-            if($serviceStructure->status != 200)
+            if(is_null($serviceStructure) || $serviceStructure->status != 200)
                 return [];
 
             return $serviceStructure->response->points_type ?? [];
         });
+
+        if(empty($result))
+            Cache::forget('points_type');
+
+        return $result;
     }
 
     /**
@@ -137,14 +157,19 @@ class Apaczka
      */
     public function packageType(): array|stdClass
     {
-        return Cache::remember('package_type', config('apaczka.cache_time'), function(){
+        $result = Cache::remember('package_type', config('apaczka.cache_time'), function(){
             $serviceStructure = json_decode($this->serviceStructure());
 
-            if($serviceStructure->status != 200)
+            if(is_null($serviceStructure) || $serviceStructure->status != 200)
                 return [];
 
             return $serviceStructure->response->package_type ?? [];
         });
+
+        if(empty($result))
+            Cache::forget('package_type');
+
+        return $result;
     }
 
     /**
