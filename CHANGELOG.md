@@ -1,3 +1,6 @@
+### 1.0.7
+* Support for laravel 10.0.
+
 ### 1.0.6
 ### 1.0.5
 * Support for non-response issues.
