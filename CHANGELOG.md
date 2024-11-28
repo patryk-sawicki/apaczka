@@ -1,3 +1,6 @@
+### 1.0.8
+* Support for laravel 11.0.
+
 ### 1.0.7
 * Support for laravel 10.0.
 
